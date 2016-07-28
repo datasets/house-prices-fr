@@ -1,0 +1,47 @@
+file://prix-immo-paris-1200-2012_cle2f2d1a.xls <-  http://www.cgedd.developpement-durable.gouv.fr/IMG/xls/prix-immo-paris-1200-2012_cle2f2d1a.xls ! download
+
+
+file://prix-immo-paris-1200-2012_cle2f2d1a.csv <- file://prix-immo-paris-1200-2012_cle2f2d1a.xls ! python
+    import pandas as pd
+    XLS = 'prix-immo-paris-1200-2012_cle2f2d1a.xls'
+    CSV = 'prix-immo-paris-1200-2012_cle2f2d1a.csv'
+    df = pd.read_excel(XLS, skiprows=3, sheetname=u"Données - data")
+    print(df)
+    print(df.columns)
+    df.to_csv(CSV, index=False, encoding='utf-8')
+
+
+file://../data <-
+	mkdir ../data
+
+
+file://../data/paris.csv <- file://prix-immo-paris-1200-2012_cle2f2d1a.csv file://../data ! python
+	import csv
+	CSV = 'prix-immo-paris-1200-2012_cle2f2d1a.csv'
+	PARIS = '../data/paris.csv'
+	prices = []
+	with open(CSV, 'rb') as csvin:
+		reader = csv.reader(csvin)
+		reader.next()
+		for row in reader:
+			prices.append(row)
+	paris = []
+	try:
+		for year, cons_price_idx, davenel, duon_center, bef_adjust, aft_adjust in prices:
+			year = int(year)
+			if year <= 1789:
+				paris.append([year, davenel])
+			elif year <= 1839:
+				paris.append([year, duon_center])
+			elif aft_adjust is not None:
+				paris.append([year, aft_adjust])
+	except ValueError:
+		# when the list of years stops, we stop
+		pass		
+	with open(PARIS, 'wb') as csvout:
+		writer = csv.writer(csvout)
+		writer.writerow(['year','price index'])
+		writer.writerows(paris)
+	
+			
+			
