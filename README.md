@@ -19,7 +19,7 @@ The indices in nominal currency have been deflated by a consumer price index com
 * Years 1820-1913: Lévy-Leboyer M. et Bourguignon F., «L’Économie Française au XIXème siècle, analyse macroéconomique», M. Lévy-Leboyer et F. Bourguignon, Économica, 1985.
 * 1913-2005: INSEE
 
-These data has been gathered by Jacques Friggit according to the (method exposed in this paper)[http://www.cgedd.developpement-durable.gouv.fr/IMG/doc/house-price-index-Paris-and-others-secular_cle7fed11.doc].
+These data has been gathered by Jacques Friggit according to the [method exposed in this paper](http://www.cgedd.developpement-durable.gouv.fr/IMG/doc/house-price-index-Paris-and-others-secular_cle7fed11.doc). Base index 1.0 in year 2000.
 
 Note that this is the aggregation of 3 series of data and gaps are big at junctions.
 
